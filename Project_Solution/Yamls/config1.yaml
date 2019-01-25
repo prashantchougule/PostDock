@@ -1,0 +1,19 @@
+apiVersion: kubeadm.k8s.io/v1alpha3
+kind: InitConfiguration
+nodeRegistration:
+  kubeletExtraArgs:
+    cloud-provider: "aws"
+---
+kind: ClusterConfiguration
+apiVersion: kubeadm.k8s.io/v1alpha3
+kubernetesVersion: v1.12.0
+apiServerExtraArgs:
+  cloud-provider: "aws"
+controllerManagerExtraArgs:
+  cloud-provider: "aws"
+kubeletExtraArgs:
+  cloud-provider: "aws"
+apiServerCertSANs:
+- "ip-172-31-1-209.us-east-2.compute.internal"
+- "ip-172-31-1-209"
+- "172.31.1.209"

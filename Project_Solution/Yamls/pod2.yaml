@@ -1,0 +1,18 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pod2
+spec:
+  volumes:
+    - name: task-volume
+      persistentVolumeClaim:
+       claimName: claim2
+  containers:
+    - name: task-container2
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/data"
+          name: task-volume

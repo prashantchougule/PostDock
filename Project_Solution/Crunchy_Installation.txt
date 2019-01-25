@@ -1,0 +1,94 @@
+go get github.com/blang/expenv
+go setup with version 1.10
+(wget https://dl.google.com/go/go1.11.4.linux-amd64.tar.gz
+tar -xvf go1.11.4.linux-amd64.tar.gz
+ mv go /usr/local
+export GOROOT=/usr/local/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+go version)
+mkdir -p $HOME/odev/src $HOME/odev/bin $HOME/odev/pkg
+cd $HOME/odev/src/github.com/crunchydata
+git clone https://github.com/CrunchyData/postgres-operator.git
+cd postgres-operator
+git checkout 3.4.0
+setup the bash env properly
+vim .bashrc
+[export GOPATH=$HOME/odev
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+export CO_NAMESPACE=demo
+export CO_CMD=kubectl
+export COROOT=$GOPATH/src/github.com/crunchydata/postgres-operator
+export CO_IMAGE_PREFIX=crunchydata
+export CO_BASEOS=centos7
+export CO_VERSION=3.4.0
+export CO_IMAGE_TAG=$CO_BASEOS-$CO_VERSION
+# for the pgo CLI auth
+export PGO_CA_CERT=$COROOT/conf/postgres-operator/server.crt
+export PGO_CLIENT_CERT=$COROOT/conf/postgres-operator/server.crt
+export PGO_CLIENT_KEY=$COROOT/conf/postgres-operator/server.key
+# for crunchy-scheduler startup
+export CCP_IMAGE_PREFIX=crunchydata
+export CCP_IMAGE_TAG=centos7-10.6-2.2.0
+# useful aliases
+alias setip='export CO_APISERVER_URL=https://`kubectl get service postgres-operator -o=jsonpath="{.spec.clusterIP}"`:8443'
+alias alog='kubectl logs `kubectl get pod --selector=name=postgres-operator -o jsonpath="{.items[0].metadata.name}"` -c apiserver'
+alias olog='kubectl logs `kubectl get pod --selector=name=postgres-operator -o jsonpath="{.items[0].metadata.name}"` -c operator'
+]
+
+source .bashrc
+
+kubectl create -f examples/demo-namespace.json
+kubectl config set-context $(kubectl config current-context) --namespace=demo
+kubectl config view -o "jsonpath={.contexts[?(@.name==\"$(kubectl config current-context 2>/dev/null)\")].context.namespace}"
+$COROOT/pv/create-pv.sh
+make setup
+make installraback
+make deployoperator
+make all
+export PGO_CA_CERT=$COROOT/conf/postgres-operator/server.crt
+export PGO_CLIENT_CERT=$COROOT/conf/postgres-operator/server.crt
+export PGO_CLIENT_KEY=$COROOT/conf/postgres-operator/server.key
+kubectl get svc postgres-operator/server
+kubectl get svc
+export CO_APISERVER_URL=https://10.109.184.8:8443
+
+version 3.3
+
+echo `echo bDF5V1ZqU29Udg== | base64 --decode`
+
+172.31.14.50-node 1
+
+l1yWVjSoTv
+
+
+Z0mtSlv4yJ
+
+
+show pool_nodes
+
+psql -h 10.104.169.26 -p 5432 -U postgres -c "show pool_nodes" postgres
+
+pgpool 10.104.169.26
+replica 10.99.203.119
+primary 10.110.192.2
+
+psql -h  10.110.192.2 -p 5432 -U postgres
+
+
+
+c
+
+ node_id |  hostname  | port | status | lb_weight |  role   | select_cnt | load_balance_node | replication_delay | last_status_change 
+---------+------------+------+--------+-----------+---------+------------+-------------------+-------------------+---------------------
+ 0       | pg         | 5432 | up     | 0.500000  | standby | 2          | true              | 0                 | 2018-12-05 09:32:58
+ 1       | pg-replica | 5432 | up     | 0.500000  | standby | 0          | false             | 0                 | 2018-12-05 09:32:58
+(2 rows)
+
+(END)
+#################date 6-12-2018#############
+postgres
+
+bt6FGzcyyx
+
+
